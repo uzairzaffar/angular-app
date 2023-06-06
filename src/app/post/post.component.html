@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser && currentUser.token">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" (click)="createPost()">Create</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<div class="card mt-4">
+    <h4 class="card-header">You're logged in with Basic HTTP Authentication!!</h4>
+    <div class="card-body">
+        <h6>Users from secure api end point</h6>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <ul *ngIf="posts">
+            <li *ngFor="let post of posts">{{post.title}} - {{post.content}}</li>
+        </ul>
+    </div>
+</div>
