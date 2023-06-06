@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 // used to create fake backend
 import { AppComponent } from './app.component';
@@ -12,7 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BasicAuthInterceptor } from './_helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 
-import { HomeComponent } from './home/home.component';
+import { PostComponent } from './post/post.component';
+import { PostFormDialog } from './post/form/post-form-dialog';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
@@ -21,12 +24,15 @@ import { LoginComponent } from './login/login.component';
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
-        CommonModule
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
-        LoginComponent
+        PostComponent,
+        LoginComponent,
+        PostFormDialog
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
