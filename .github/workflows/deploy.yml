@@ -13,10 +13,10 @@ jobs:
       uses: actions/checkout@v1
 
     - name: install dependencies
-      uses: npm install
+      run: npm install
 
     - name: build website
-      uses: npm run build
+      run: npm run build
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -26,4 +26,4 @@ jobs:
         aws-region: us-west-2
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./dist/angular-app s3://BUCKET_NAME --delete
+      run: aws s3 sync ./dist/angular-app s3://static-angular-website --delete
